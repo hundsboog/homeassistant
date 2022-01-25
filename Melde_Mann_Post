@@ -1,0 +1,21 @@
+sequence:
+  - repeat:
+      count: '10'
+      sequence:
+        - service: light.toggle
+          target:
+            entity_id: light.yeelight_meldemann
+          data:
+            color_name: yellow
+            brightness: 255
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 1
+            milliseconds: 0
+        - service: light.turn_off
+          target:
+            entity_id: light.yeelight_meldemann
+mode: single
+alias: Melde Mann Post
+icon: mdi:alarm-light
