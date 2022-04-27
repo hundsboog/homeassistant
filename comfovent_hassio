@@ -1,0 +1,178 @@
+type: vertical-stack
+name: Recuperation
+cards:
+  - type: horizontal-stack
+    title: Lüftungssteuerung
+    cards:
+      - type: button
+        entity: switch.komfovent_auto_mode
+        name: Auto
+        icon: mdi:home-floor-a
+        hold_action: more_info
+      - type: button
+        entity: switch.komfovent_eco_mode
+        name: Eco
+        icon: mdi:alpha-e-box-outline
+        hold_action: more-info
+      - type: button
+        entity: switch.komfovent_power
+        name: An/Aus
+        icon: mdi:power
+        hold_action: more-info
+  - type: horizontal-stack
+    cards:
+      - type: button
+        tap_action:
+          action: call-service
+          service: modbus.write_register
+          service_data:
+            address: 4
+            hub: Komfovent
+            unit: 1
+            value: 1
+        hold_action:
+          action: none
+        name: Außer Haus
+        show_name: true
+        icon: mdi:home-export-outline
+      - type: button
+        tap_action:
+          action: call-service
+          service: modbus.write_register
+          service_data:
+            address: 4
+            hub: Komfovent
+            unit: 1
+            value: 2
+        hold_action:
+          action: none
+        name: Normal
+        show_name: true
+        icon: mdi:home-account
+      - type: button
+        tap_action:
+          action: call-service
+          service: modbus.write_register
+          service_data:
+            address: 4
+            hub: Komfovent
+            unit: 1
+            value: 3
+        hold_action:
+          action: none
+        name: Intensiv
+        show_name: true
+        icon: mdi:fan-plus
+      - type: button
+        tap_action:
+          action: call-service
+          service: modbus.write_register
+          service_data:
+            address: 4
+            hub: Komfovent
+            unit: 1
+            value: 4
+        hold_action:
+          action: none
+        name: Boost
+        show_name: true
+        icon: mdi:fan
+  - type: horizontal-stack
+    title: Übersicht
+    cards:
+      - type: sensor
+        entity: sensor.komfovent_outdoor_temperature_c
+        name: Temperatur
+        icon: mdi:thermometer
+        tap_action:
+          action: none
+        hold_action: more-info
+      - type: sensor
+        entity: sensor.komfovent_supply_temperature_c
+        name: Zuluft
+        icon: mdi:home-import-outline
+        tap_action:
+          action: none
+        hold_action: more-info
+      - type: sensor
+        entity: sensor.komfovent_extract_temperature_c
+        name: Abluft
+        icon: mdi:home-export-outline
+        tap_action:
+          action: none
+        hold_action: more-info
+  - type: horizontal-stack
+    cards:
+      - type: sensor
+        entity: sensor.komfovent_supply_flow
+        name: SP Vent
+        icon: mdi:fan
+        tap_action:
+          action: none
+        hold_action: more-info
+      - type: sensor
+        entity: sensor.komfovent_extract_flow
+        name: VT Vent
+        icon: mdi:fan
+        tap_action:
+          action: none
+        hold_action: more-info
+      - type: sensor
+        entity: sensor.komfovent_filter_impurity
+        name: Filter
+        icon: mdi:air-filter
+        tap_action:
+          action: none
+        hold_action: more-info
+  - type: horizontal-stack
+    cards:
+      - type: sensor
+        entity: sensor.komfovent_heating_recovery_day_kwh
+        name: 1P Rückgewinn
+        icon: mdi:atom-variant
+        tap_action:
+          action: none
+        hold_action: more-info
+      - type: sensor
+        entity: sensor.komfovent_heat_recovery_w
+        name: Rückgewinn
+        icon: mdi:atom-variant
+        tap_action:
+          action: none
+        hold_action: more-info
+      - type: sensor
+        entity: sensor.komfovent_power_consumption_w
+        name: Verbrauch
+        icon: mdi:lightning-bolt-outline
+        hold_action: more-info
+  - type: horizontal-stack
+    title: Planung
+    cards:
+      - type: button
+        tap_action:
+          action: call-service
+          service: modbus.write_register
+          service_data:
+            address: 5
+            hub: Komfovent
+            unit: 1
+            value: 0
+        hold_action:
+          action: none
+        name: Büro
+        show_name: true
+        icon: mdi:home-outline
+      - type: button
+        tap_action:
+          action: call-service
+          service: modbus.write_register
+          service_data:
+            address: 5
+            hub: Komfovent
+            unit: 1
+            value: 1
+        hold_action:
+          action: none
+        name: Arbeit
+        show_name: true
+        icon: mdi:home-city-outline
